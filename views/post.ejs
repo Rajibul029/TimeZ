@@ -1,0 +1,44 @@
+<h1><%= data.title %></h1>
+<img class="image" src="../uploads/<%= data.image %>">
+<span class="article-list__date">Post on : <%= data.createdAt.toDateString() %></span>
+<span class="article-list__date"></span>
+<span class="article-list__date">Image Credits: TimeZ</span>
+<br><br>
+<article class="article"><%= data.body %></article>
+
+<p class="comm-st">.......................................................................................</p>
+<p class="comm-st"><b>START A CONVERSATION</b></p>
+<div class="comm-img">
+    <img src="../uploads/comment.svg">
+</div>
+
+<!-- imported -->
+<p><b>Leave a Comment : </b></p>
+<form class="comment-form" action="<%= currentRoute%>/add-comment" method="POST">
+    <textarea name="comment" rows="1" cols="50" placeholder="Write your comment here..." class="comm-area"></textarea>
+    <label for="rating" >Rating:</label>
+    <select name="rating" class="comm-area" required>
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+    </select>
+    <button type="submit" class="btn">Post</button>
+</form>
+<h5>Average Rating: <%= averageRating %> Stars</h5>
+<p><b>All Comments :</b></p>
+<ul class="comments">
+
+    <% if (comments.length === 0) { %>
+        <p>No comments yet. Be the first to comment!</p>
+    <% } else { %>
+        <% comments.forEach(function(comment) { %>
+            <li><%= comment.userId?.username || 'Anonymous' %></li>
+            <ul class="comments_1">
+                Rating: <%= comment.rating %> Stars<br>
+                <%= comment.text %>
+            </ul>
+        <% }); %>
+    <% } %>
+</ul>

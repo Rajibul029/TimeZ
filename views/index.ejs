@@ -1,0 +1,34 @@
+<div class="author">
+  <h1 class="author__heading">Welcome To Our Blog Web</h1>
+  <p class="author__body">Web developer and content creator.</p>
+</div>
+
+<img src="/img/blog-home.avif" alt="person looking out through window" class="hero-image" width="981" height="528">
+
+<section class="articles">
+  <h2 class="articles__heading"><b>Latest Posts</b></h2>
+
+  <ul class="article-ul">
+    <% data.forEach(post => { %>
+      <li>
+        <a href="/post/<%= post._id %>">
+          <!-- add image here..... -->
+          <img class="image-index" src="../uploads/<%= post.image %>">
+          <span><%= post.title %></span>
+          <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+
+
+  <% if (nextPage !== null) { %>
+    <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+  <% } %>
+ 
+
+  
+
+
+
+</section>

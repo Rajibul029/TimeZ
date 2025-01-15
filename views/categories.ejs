@@ -1,0 +1,12 @@
+<h2>Categories</h2>
+    <ul>
+        <% if (categories.length > 0) { %>
+            <% categories.forEach(category => { %>
+                <li>
+                    <a href="/category/<%= category %>"><%= category %></a>
+                </li>
+            <% }) %>
+        <% } else { %>
+            <p>No categories available.</p>
+        <% } %>
+    </ul>
