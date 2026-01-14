@@ -104,7 +104,7 @@ router.post('/singup', async (req, res) => {
  * GET /
  * HOME
 */
-router.get('',UauthMiddleware, async (req, res) => {
+router.get('', async (req, res) => {
   try {
     const locals = {
       title: "Home",
